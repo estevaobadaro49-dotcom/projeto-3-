@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clínica Vida+ | Gestão</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">+</span><div><strong>Vida+</strong><small>Gestão Clínica</small></div></div>
+      <nav>
+        <button class="nav-item active" data-section="dashboard">⌂ <span>Dashboard</span></button>
+        <button class="nav-item" data-section="pacientes">♙ <span>Pacientes</span></button>
+        <button class="nav-item" data-section="consultas">▣ <span>Consultas</span></button>
+        <button class="nav-item" data-section="profissionais">⚕ <span>Profissionais</span></button>
+        <button class="nav-item" data-section="especialidades">◈ <span>Especialidades</span></button>
+        <button class="nav-item" data-section="pagamentos">R$ <span>Pagamentos</span></button>
+      </nav>
+      <div class="sidebar-footer">Projeto Integrador<br><span>PostgreSQL • Supabase</span></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div><p class="eyebrow">GESTÃO DA CLÍNICA</p><h1 id="page-title">Visão geral</h1></div>
+        <div class="top-actions"><span class="status-dot"></span> Sistema operacional</div>
+      </header>
+
+      <section id="dashboard" class="section active">
+        <div class="hero"><div><span class="pill">Resumo operacional</span><h2>Decisões melhores começam com dados organizados.</h2><p>Acompanhe pacientes, agenda e faturamento em um só lugar.</p></div><button class="primary" data-section="consultas">+ Nova consulta</button></div>
+        <div class="cards" id="stats"></div>
+        <div class="grid-2">
+          <div class="panel"><div class="panel-head"><div><h3>Próximas consultas</h3><p>Agenda da clínica</p></div><button class="ghost" data-section="consultas">Ver todas</button></div><div id="upcoming"></div></div>
+          <div class="panel"><div class="panel-head"><div><h3>Distribuição por especialidade</h3><p>Consultas agendadas</p></div></div><div id="specialty-chart" class="bars"></div></div>
+        </div>
+      </section>
+
+      <section id="pacientes" class="section">
+        <div class="section-head"><div><h2>Pacientes</h2><p>Cadastro e acompanhamento dos pacientes.</p></div><button class="primary" id="add-patient">+ Cadastrar paciente</button></div>
+        <div class="toolbar"><input id="patient-search" placeholder="Pesquisar por nome, CPF ou e-mail..."><select id="patient-filter"><option value="">Todos os status</option><option>Ativo</option><option>Inativo</option></select></div>
+        <div class="panel table-wrap"><table><thead><tr><th>Paciente</th><th>Contato</th><th>Nascimento</th><th>Status</th><th></th></tr></thead><tbody id="patients-table"></tbody></table></div>
+      </section>
+
+      <section id="consultas" class="section">
+        <div class="section-head"><div><h2>Consultas</h2><p>Agenda, status e modalidade dos atendimentos.</p></div><button class="primary" id="add-appointment">+ Agendar consulta</button></div>
+        <div class="toolbar"><input id="appointment-search" placeholder="Pesquisar paciente ou profissional..."><select id="appointment-filter"><option value="">Todos os status</option><option>Agendada</option><option>Concluída</option><option>Cancelada</option><option>Pendente</option></select></div>
+        <div class="panel table-wrap"><table><thead><tr><th>Data</th><th>Paciente</th><th>Profissional</th><th>Especialidade</th><th>Modalidade</th><th>Status</th></tr></thead><tbody id="appointments-table"></tbody></table></div>
+      </section>
+
+      <section id="profissionais" class="section">
+        <div class="section-head"><div><h2>Profissionais</h2><p>Equipe cadastrada na clínica.</p></div></div>
+        <div class="cards mini" id="professionals-cards"></div>
+      </section>
+
+      <section id="especialidades" class="section">
+        <div class="section-head"><div><h2>Especialidades</h2><p>Áreas de atendimento disponíveis.</p></div></div>
+        <div class="specialty-grid" id="specialties-grid"></div>
+      </section>
+
+      <section id="pagamentos" class="section">
+        <div class="section-head"><div><h2>Pagamentos</h2><p>Receitas e situação financeira dos atendimentos.</p></div></div>
+        <div class="cards" id="finance-stats"></div>
+        <div class="panel table-wrap"><table><thead><tr><th>Paciente</th><th>Descrição</th><th>Vencimento</th><th>Valor</th><th>Status</th></tr></thead><tbody id="payments-table"></tbody></table></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="modal" class="modal hidden"><div class="modal-box"><button class="close" id="close-modal">×</button><div id="modal-content"></div></div></div>
+  <div id="toast" class="toast"></div>
+  <script src="js/main.js"></script>
+</body>
+</html>
